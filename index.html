@@ -1,281 +1,222 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE HTML SYSTEM "about:legacy-compat">
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <meta content="IE=8" http-equiv="X-UA-Compatible"/>
-    <link href="/certificadosdgb/resources/dijit/themes/tundra/tundra.css" type="text/css" rel="stylesheet"/>
-    <link href="/certificadosdgb/resources/styles/standard.css" media="screen" type="text/css" rel="stylesheet"/>
-    <link href="/certificadosdgb/resources/images/favicon.ico" rel="SHORTCUT ICON"/>
-    <script type="text/javascript">
-    var djConfig = {
-        parseOnLoad: false,
-        isDebug: false,
-        locale: 'es_mx'
-    };
-    </script>
-    <script type="text/javascript" src="/certificadosdgb/resources/dojo/dojo.js"></script>
-    <script type="text/javascript" src="/certificadosdgb/resources/spring/Spring.js"></script>
-    <script type="text/javascript" src="/certificadosdgb/resources/spring/Spring-Dojo.js"></script>
-    <script type="text/javascript" language="JavaScript">
-    dojo.require("dojo.parser");
-    </script>
-    <title>Bienvenidos a la consulta de certificados del bachillerato general</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulta Académica Digital</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef2f5;
+    color:#222;
+}
+.watermark{
+    position:fixed;
+    top:45%;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(-25deg);
+    font-size:52px;
+    font-weight:bold;
+    color:rgba(0,0,0,.08);
+    text-align:center;
+    z-index:0;
+    pointer-events:none;
+}
+.container{
+    position:relative;
+    z-index:1;
+    max-width:950px;
+    margin:35px auto;
+    background:#fff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+header{
+    background:linear-gradient(135deg,#173f4f,#276477);
+    color:#fff;
+    padding:32px 25px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+    font-size:30px;
+}
+.content{
+    padding:30px;
+}
+.badge{
+    display:inline-block;
+    background:#e8f0f2;
+    color:#173f4f;
+    padding:8px 14px;
+    border-radius:20px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-bottom:30px;
+}
+.card{
+    background:#f8fafb;
+    border:1px solid #dce4e8;
+    border-radius:12px;
+    padding:20px;
+}
+.card h3{
+    margin-top:0;
+    color:#173f4f;
+}
+.label{
+    display:block;
+    font-size:13px;
+    color:#666;
+}
+.value{
+    font-size:17px;
+    font-weight:bold;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:15px;
+}
+th,td{
+    border:1px solid #d7dfe3;
+    padding:14px;
+    text-align:left;
+}
+th{
+    background:#edf3f5;
+    width:35%;
+    color:#173f4f;
+}
+.print-btn{
+    margin-top:25px;
+    background:#173f4f;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+}
+footer{
+    background:#f4f4f4;
+    padding:22px;
+    text-align:center;
+    font-size:14px;
+    color:#555;
+}
+@media(max-width:800px){
+    .cards{
+        grid-template-columns:1fr;
+    }
+    .container{
+        margin:15px;
+    }
+    .watermark{
+        font-size:32px;
+    }
+}
+</style>
 </head>
-<body class="tundra spring">
-    <div id="wrapper">
-        <div version="2.0" id="header">
-            <a title="Home" name="Home" href="/certificadosdgb/">
-                <img src="/certificadosdgb/resources/images/certif.png"/>
-            </a>
-        </div>
-        <div version="2.0" id="menu">
-            <ul id="_menu">
-                <li id="c_certificadoremesadetalle">
-                    <h2>Consulta</h2>
-                    <ul>
-                        <li id="fi_certificadoremesadetalle_folioequals">
-                            <a title="Por Folio" href="/certificadosdgb/certificadoremesadetalles?find=ByFolioEq">Por Folio</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div id="main">
-            <div version="2.0">
-                <script type="text/javascript">
-                dojo.require('dijit.TitlePane');
-                </script>
-                <div id="_title_ps_com_dgb_sep_domain_CertificadoRemesaDetalle_id">
-                    <script type="text/javascript">
-                    Spring.addDecoration(new Spring.ElementDecoration({
-                        elementId: '_title_ps_com_dgb_sep_domain_CertificadoRemesaDetalle_id',
-                        widgetType: 'dijit.TitlePane',
-                        widgetAttrs: {
-                            title: 'Informaci&oacute;n de certificados emitidos. Estudiantes de Bachillerato Certificados',
-                            open: true
-                        }
-                    }));
-                    </script>
-                    <p style="background-color:#D4C19C;" align="center">
-                        <b>Datos del estudiante</b>
-                    </p>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpNombreCompleto_id">
-                        <label for="_tmpNombreCompleto_id">Nombre(s) y Apellidos(s):
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpNombreCompleto_tmpNombreCompleto_id" class="box">MARIANO PULIDO GARAY</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_matricula_id">
-                        <label for="_matricula_id">Número de matricula:
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_matricula_matricula_id" class="box">118669</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <p style="background-color:#D4C19C;" align="center">
-                        <b>Datos del plantel o servicio educativo</b>
-                    </p>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_Tmpinstitucion_emisora_id">
-                        <label for="_Tmpinstitucion_emisora_id">Institucion educativa emisora
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_Tmpinstitucion_emisora_Tmpinstitucion_emisora_id" class="box">Direccion General de Universidad</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_Tmplineavacio_id">
-                        <label for="_Tmplineavacio_id"> 
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_Tmplineavacio_Tmplineavacio_id" class="box"></div>
-                    </div>
-                    <br/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpTipoPlantel_id">
-                        <label for="_tmpTipoPlantel_id">Plantel o Servicio educativo
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpTipoPlantel_tmpTipoPlantel_id" class="box">ESCUELA UNIVERSIDAD PUBLICA INCORPORADA</div>
-                    </div>
-                    <br/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpNombrePlantel_id">
-                        <label for="_tmpNombrePlantel_id"> 
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpNombrePlantel_tmpNombrePlantel_id" class="box">Universidad de Guanajuato, Campus Guanajuato</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpClaveCct_id">
-                        <label for="_tmpClaveCct_id">Clave de centro de trabajo
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpClaveCct_tmpClaveCct_id" class="box">11MSU0013Z</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <p style="background-color:#D4C19C;" align="center">
-                        <b>Trayectoria académica y datos del documento</b>
-                    </p>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpPlanDeEstudios_id">
-                        <label for="_TmpPlanDeEstudios_id">Plan de Estudios
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpPlanDeEstudios_TmpPlanDeEstudios_id" class="box">Estudios Superiores</div>
-                    </div>
-                    <br/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_promedio_id">
-                        <label for="_promedio_id">Promedio
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_promedio_promedio_id" class="box">9.3</div>
-                    </div>
-                    <br/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpPromedioInLetters_id">
-                        <label for="_TmpPromedioInLetters_id"> 
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpPromedioInLetters_TmpPromedioInLetters_id" class="box">Nueve Punto Tres </div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpCreditosObtenidos_id">
-                        <label for="_TmpCreditosObtenidos_id">Créditos obtenidos 
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpCreditosObtenidos_TmpCreditosObtenidos_id" class="box">258 de un total de 258</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpPeriodo_id">
-                        <label for="_tmpPeriodo_id">Periodo en que se cursaron los estudios
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpPeriodo_tmpPeriodo_id" class="box">21/08/2021 al 04/06/2026</div>
-                    </div>
-                    <br/>
-                    <p>
-                        <b/>
-                    </p>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpTipoCertificado_id">
-                        <label for="_tmpTipoCertificado_id">Tipo de documento
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpTipoCertificado_tmpTipoCertificado_id" class="box">Certificado de terminaci&oacute;n de estudios</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpCertificadoEstatus_id">
-                        <label for="_TmpCertificadoEstatus_id">Estatus
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpCertificadoEstatus_TmpCertificadoEstatus_id" class="box">Registrado en el SIGED</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpFolioDigital_id">
-                        <label for="_tmpFolioDigital_id">Folio
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_tmpFolioDigital_tmpFolioDigital_id" class="box">CCG20801717</div>
-                    </div>
-                    <br/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpFolioDigital1_id">
-                        <label for="_TmpFolioDigital1_id"> 
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpFolioDigital1_TmpFolioDigital1_id" class="box"></div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpFechaTimbrado_id">
-                        <label for="_TmpFechaTimbrado_id">Fecha y hora de timbrado
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpFechaTimbrado_TmpFechaTimbrado_id" class="box">15/06/2026 19:09:21</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpEmailHelp_id">
-                        <label for="_TmpEmailHelp_id">Correo electrónico
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpEmailHelp_TmpEmailHelp_id" class="box">
-                            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bbd8d4d5cfc9d4d7dec8d8d4d7dac9e4dfdcd9fbd5ced9de95c8decb95dcd4d995d6c3">[controlescolar_dgb@nube.sep.gob]</a>
-                        </div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpTelHelp_id">
-                        <label for="_TmpTelHelp_id">Teléfono
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpTelHelp_TmpTelHelp_id" class="box">56-3667-1000 Ext. 63529</div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpLinkSiged_id">
-                        <label for="_TmpLinkSiged_id"> 
-                                :
-                              </label>
-                        <div id="_s_com_dgb_sep_domain_CertificadoRemesaDetalle_TmpLinkSiged_TmpLinkSiged_id" class="box"></div>
-                    </div>
-                    <br/>
-                    <p/>
-                    <div class="quicklinks">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-            <div version="2.0" id="footer">
-                <span/>
-                <span id="language"/>
-            </div>
-        </div>
-    </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"61baed0c9d3a4056b5f326b60e0a815d","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
-    <script>
-    (function() {
-        function c() {
-            var b = a.contentDocument || a.contentWindow.document;
-            if (b) {
-                var d = b.createElement('script');
-                d.innerHTML = "window.__CF$cv$params={r:'a064fbdb4da2574f',t:'MTc4MDU1NTYyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-                b.getElementsByTagName('head')[0].appendChild(d)
-            }
-        }
-        if (document.body) {
-            var a = document.createElement('iframe');
-            a.height = 1;
-            a.width = 1;
-            a.style.position = 'absolute';
-            a.style.top = 0;
-            a.style.left = 0;
-            a.style.border = 'none';
-            a.style.visibility = 'hidden';
-            document.body.appendChild(a);
-            if ('loading' !== document.readyState)
-                c();
-            else if (window.addEventListener)
-                document.addEventListener('DOMContentLoaded', c);
-            else {
-                var e = document.onreadystatechange || function() {};
-                document.onreadystatechange = function(b) {
-                    e(b);
-                    'loading' !== document.readyState && (document.onreadystatechange = e, c())
-                }
-            }
-        }
-    })();
-    </script>
+<body>
+<div class="watermark">
+    Consulta ACADÉMICA
+</div>
+<div class="container">
+<header>
+    <h1>Consulta Académica Digital</h1>
+</header>
+<main class="content">
+<span class="badge">Folio: 2845-UG-2026-034</span>
+<section class="cards">
+<div class="card">
+    <h3>Institución</h3>
+    <span class="label">Escuela</span>
+    <span class="value">Universidad de Guanajuato</span>
+    <br><br>
+    <span class="label">Clave de trabajo</span>
+    <span class="value">11MSU0013Z</span>
+</div>
+<div class="card">
+    <h3>Programa académico</h3>
+    <span class="label">Nivel educativo</span>
+    <span class="value">Educación superior</span>
+    <br><br>
+    <span class="label">Plan de estudios</span>
+    <span class="value">Licenciatura en Arquitectura</span>
+</div>
+<div class="card">
+    <h3>Resultado</h3>
+    <span class="label">Promedio general</span>
+    <span class="value">9.3</span>
+    <br><br>
+    <span class="label">Estatus</span>
+    <span class="value">Créditos 258/258</span>
+</div>
+</section>
+<h2>Detalle de consulta</h2>
+<table>
+<tr>
+    <th>Escuela</th>
+    <td>Universidad de Guanajuato</td>
+</tr>
+<tr>
+    <th>Nombre</th>
+    <td>Mariano Pulido Garay
+    </td>
+</tr>
+    <th>Matricula</th>
+    <td>180669
+    </td>
+</tr>
+<tr>
+    <th>Plan de estudios</th>
+    <td>Licenciatura en Arquitectura</td>
+</tr>
+<tr>
+    <th>Promedio</th>
+    <td>9.3</td>
+</tr>
+<tr>
+    <th>Fecha y hora de consulta</th>
+    <td id="fechaConsulta"></td>
+</tr>
+</table>
+<button class="print-btn" onclick="window.print()">
+    Imprimir
+</button>
+</main>
+<footer>
+    Consulta académica.
+</footer>
+</div>
+<script>
+function actualizarFecha() {
+    const fecha = new Date();
+    const opciones = {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+    };
+    const fechaFormateada =
+        fecha.toLocaleDateString('es-MX', opciones);
+    const horas =
+        String(fecha.getHours()).padStart(2,'0');
+    const minutos =
+        String(fecha.getMinutes()).padStart(2,'0');
+    const segundos =
+        String(fecha.getSeconds()).padStart(2,'0');
+    document.getElementById('fechaConsulta').textContent =
+        `${fechaFormateada}, ${horas}:${minutos}:${segundos} horas`;
+}
+actualizarFecha();
+setInterval(actualizarFecha,1000);
+</script>
 </body>
 </html>
